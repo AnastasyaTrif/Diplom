@@ -84,9 +84,10 @@ import islandScene from '../assets/3d/island.glb';
             <a.group ref={islandRef} {...props} >
         <group {...props} dispose={null}>
             <group position={[24.723, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+            {/*<group position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>*/}
                 <group rotation={[Math.PI / 2, 0, 0]}>
-                    <group position={[78.106, 354.318, 253.375]} scale={[-6.813, 23.278, 3.386]}>
-                        <mesh
+                    <group position={[78.106, 354.318, 253.375]} scale={[-2.813, 10.278, 1.386]}>
+                    <mesh
                            
                             
                             geometry={nodes.gudang_buah023_papan_rumah_2_no_3_0.geometry}

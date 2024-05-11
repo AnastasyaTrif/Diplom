@@ -83,11 +83,17 @@ const Home = () => {
     const adjustIslandForScreenSize = () => {
         let screenScale, screenPosition;
         if (window.innerWidth < 768) {
-            screenScale = [0.9, 0.9, 0.9];
-            screenPosition = [0, -6.5, -43];
+
+            // screenScale = [0.9, 0.9, 0.9];
+            // screenPosition = [0, -6.5, -43];
+            screenScale = [0.425, 0.425, 0.425];
+            screenPosition = [0, -30, -250];
+
         } else {
-            screenScale = [1, 1, 1];
-            screenPosition = [0, -6.5, -43.4]; // Исправляем координаты
+            // screenScale = [1, 1, 1];
+            // screenPosition = [0, -6.5, -43.4]; // Исправляем координаты
+            screenScale = [0.425, 0.425, 0.425];
+            screenPosition = [0, -30, -250];
         }
         return [screenScale, screenPosition];
     };
@@ -115,7 +121,8 @@ const Home = () => {
                     <Island
                         position={islandPosition}
                         scale={islandScale}
-                        rotation={[0.1, 4.7077, 0]}
+                        // rotation={[0.1, 4.7077, 0]}
+                        rotation={[0, 6, 0]}
                         // rotation={islandRotation}
                         isRotating={isRotating}
                         setIsRotating={setIsRotating}
