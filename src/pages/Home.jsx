@@ -75,6 +75,8 @@ import { Canvas } from '@react-three/fiber';
 import Loader from "../components/Loader.jsx";
 import Island from "../models/Island.jsx";
 import Sky from "../models/Sky.jsx";
+import Bird from "../models/Bird.jsx";
+import Plane from "../models/Plane.jsx";
 
 const Home = () => {
     const [isRotating, setIsRotating] = useState(false);
@@ -84,22 +86,36 @@ const Home = () => {
         let screenScale, screenPosition;
         if (window.innerWidth < 768) {
 
-            // screenScale = [0.9, 0.9, 0.9];
+            // screenScale = [0.9, 0.9, 0.9]; первые, какие были
             // screenPosition = [0, -6.5, -43];
             screenScale = [0.425, 0.425, 0.425];
             screenPosition = [0, -30, -250];
 
         } else {
             // screenScale = [1, 1, 1];
-            // screenPosition = [0, -6.5, -43.4]; // Исправляем координаты
+            // screenPosition = [0, -6.5, -43.4]; // первые, какие были
             screenScale = [0.425, 0.425, 0.425];
             screenPosition = [0, -30, -250];
         }
         return [screenScale, screenPosition];
     };
+    const adjustPlaneForScreenSize = () => {
+        let screenScale, screenPosition;
 
-    const [islandScale, islandPosition] = adjustIslandForScreenSize();
+        if (window.innerWidth < 768) {
 
+            screenScale = [1.5, 1.5, 1.5];
+            screenPosition=[0, -1.5, 0]
+
+        } else {
+            screenScale = [3, 3, 3]
+            screenPosition = [0, -4, -4] // for big screen should be better
+        }
+        return [screenScale, screenPosition];
+    };
+
+    const [islandScale, islandPosition, islandRotation] = adjustIslandForScreenSize();
+    const [planeScale, planePosition] = adjustPlaneForScreenSize();
     return (
         <section className="w-full h-screen relative">
             <Canvas
@@ -117,6 +133,7 @@ const Home = () => {
                         intensity={2}
                     />
                     <hemisphereLight skyColor="#b1e1ff" groundColor="#000000" intensity={1} />
+                    <Bird/>
                     <Sky />
                     <Island
                         position={islandPosition}
@@ -126,6 +143,12 @@ const Home = () => {
                         // rotation={islandRotation}
                         isRotating={isRotating}
                         setIsRotating={setIsRotating}
+                    />
+                    <Plane
+                        isRotation={isRotating}
+                    planeScale={planeScale}
+                    planePosition={planePosition}
+                        rotation={[0, 20, 0]}
                     />
                 </Suspense>
             </Canvas>

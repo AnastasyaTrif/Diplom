@@ -12,7 +12,7 @@ import islandScene from '../assets/3d/island.glb';
         const { nodes, materials } = useGLTF(islandScene);
         const lastX = useRef(0)
         const rotationSpeed = useRef(0)
-        const dampingFactor = 0.95
+        const dampingFactor = 0.95; // скорость вращения и перемещения моделди
 
         const handlePointerDown = (e) => {
             e.stopPropagation();
@@ -26,6 +26,7 @@ import islandScene from '../assets/3d/island.glb';
             e.stopPropagation();
             e.preventDefault();
             setIsRotating(false);
+
             const clientX = e.touches ? e.touches[0].clientX : e.clientX;
             const delta = (clientX - lastX.current) / viewport.width;
 
