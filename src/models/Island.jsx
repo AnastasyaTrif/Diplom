@@ -27,20 +27,21 @@ import islandScene from '../assets/3d/island.glb';
             e.preventDefault();
             setIsRotating(false);
 
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            const delta = (clientX - lastX.current) / viewport.width;
-
-            islandRef.current.rotation.y += delta * 0.01 * Math.PI;
-
-            lastX.current = clientX;
-
-            rotationSpeed.current = delta * 0.01 * Math.PI;
         }
         const handlePointerMove = (e) => {
             e.stopPropagation();
             e.preventDefault();
 
-            if(isRotating) handlePointerUp(e);
+            if(isRotating) {
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const delta = (clientX - lastX.current) / viewport.width;
+
+                islandRef.current.rotation.y += delta * 0.01 * Math.PI;
+
+                lastX.current = clientX;
+
+                rotationSpeed.current = delta * 0.01 * Math.PI;
+            }
 
         }
 //
@@ -62,17 +63,53 @@ import islandScene from '../assets/3d/island.glb';
             }
         }
 
+        useFrame (() => {
+            if(!isRotating) {
+                rotationSpeed.current *= dampingFactor;
+
+                if(Math.abs(rotationSpeed.current) < 0.001) {
+                    rotationSpeed.current = 0;
+                }
+        } else {
+                const rotation = islandRef.current.rotation.y;
+
+
+
+        const normalizedRotation =
+            ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+
+        // Set the current stage based on the island's orientation
+        switch (true) {
+            case normalizedRotation >= 5.45 && normalizedRotation <= 5.85:
+                setCurrentStage(4);
+                break;
+            case normalizedRotation >= 0.85 && normalizedRotation <= 1.3:
+                setCurrentStage(3);
+                break;
+            case normalizedRotation >= 2.4 && normalizedRotation <= 2.6:
+                setCurrentStage(2);
+                break;
+            case normalizedRotation >= 4.25 && normalizedRotation <= 4.75:
+                setCurrentStage(1);
+                break;
+            default:
+                setCurrentStage(null);
+        }
+    }
+});
+
         useEffect(() => {
-            document.addEventListener('pointerdown', handlePointerDown)
-            document.addEventListener('pointerup', handlePointerUp)
-            document.addEventListener('pointermove', handlePointerMove)
+            const canvas = gl.domElement
+            canvas.addEventListener('pointerdown', handlePointerDown)
+            canvas.addEventListener('pointerup', handlePointerUp)
+            canvas.addEventListener('pointermove', handlePointerMove)
             document.addEventListener('keydown', handleKeyDown)
             document.addEventListener('keyup', handleKeyUp)
 
             return() => {
-                document.removeEventListener('pointerdown', handlePointerDown)
-                document.removeEventListener('pointerup', handlePointerUp)
-                document.removeEventListener('pointermove', handlePointerMove)
+                canvas.removeEventListener('pointerdown', handlePointerDown)
+                canvas.removeEventListener('pointerup', handlePointerUp)
+                canvas.removeEventListener('pointermove', handlePointerMove)
                 document.addEventListener('keydown', handleKeyDown)
                 document.addEventListener('keyup', handleKeyUp)
 
@@ -89,8 +126,6 @@ import islandScene from '../assets/3d/island.glb';
                 <group rotation={[Math.PI / 2, 0, 0]}>
                     <group position={[78.106, 354.318, 253.375]} scale={[-2.813, 10.278, 1.386]}>
                     <mesh
-                           
-                            
                             geometry={nodes.gudang_buah023_papan_rumah_2_no_3_0.geometry}
                             material={materials.papan_rumah_2_no_3}
                         />

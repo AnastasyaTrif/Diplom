@@ -76,7 +76,7 @@ import Loader from "../components/Loader.jsx";
 import Island from "../models/Island.jsx";
 import Sky from "../models/Sky.jsx";
 import Bird from "../models/Bird.jsx";
-import Plane from "../models/Plane.jsx";
+import {Plane} from "../models/Plane.jsx";
 
 const Home = () => {
     const [isRotating, setIsRotating] = useState(false);
@@ -95,7 +95,7 @@ const Home = () => {
             // screenScale = [1, 1, 1];
             // screenPosition = [0, -6.5, -43.4]; // первые, какие были
             screenScale = [0.425, 0.425, 0.425];
-            screenPosition = [0, -30, -250];
+            screenPosition = [150, -30, -400]; // положение модели на экране (сторона сдвиг, верх низ, вперед назад отдоление )
         }
         return [screenScale, screenPosition];
     };
@@ -139,10 +139,11 @@ const Home = () => {
                         position={islandPosition}
                         scale={islandScale}
                         // rotation={[0.1, 4.7077, 0]}
-                        rotation={[0, 6, 0]}
+                        rotation={[0, 15, 0]} // na 180 povernyla
                         // rotation={islandRotation}
                         isRotating={isRotating}
                         setIsRotating={setIsRotating}
+
                     />
                     <Plane
                         isRotation={isRotating}
