@@ -2,9 +2,9 @@ import emailjs from "@emailjs/browser";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useRef, useState } from "react";
 
-import { Fox } from "../models";
-import useAlert from "../hooks/useAlert";
-import { Alert, Loader } from "../components";
+// import { Fox } from "../models";
+// import useAlert from "../hooks/useAlert";
+// import { Alert, Loader } from "../components";
 
 const Contact = () => {
     const formRef = useRef();
@@ -22,62 +22,61 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setLoading(true);
+        setIsLoading(true);
         setCurrentAnimation("hit");
-        emailjs.sendForm(
+        console.log(import.meta.env.VITE_APP_EMAILJS_SERVICE_ID)
+        emailjs.send(
             import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
             import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
             {
-                from_name
-            }
+                from_name: from.name,
+                to_name: "Anastasia",
+                from_email: from.email,
+                to_email: 'trifakova2710@gmail.com',
+                message: from.message
+            },
+            import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        ).then(() => {
+            setIsLoading(false);
+            setForm({name: '', email: '', message: ''})
 
-        )
+        }).catch((error) => {
+            setIsLoading(false)
+            console.log(error)
+        })
+    }
 
-        emailjs
-            .send(
-                import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-                import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-                {
-                    from_name: form.name,
-                    to_name: "JavaScript Mastery",
-                    from_email: form.email,
-                    to_email: "sujata@jsmastery.pro",
-                    message: form.message,
-                },
-                import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-            )
-            .then(
-                () => {
-                    setLoading(false);
-                    showAlert({
-                        show: true,
-                        text: "Thank you for your message 😃",
-                        type: "success",
-                    });
 
-                    setTimeout(() => {
-                        hideAlert(false);
-                        setCurrentAnimation("idle");
-                        setForm({
-                            name: "",
-                            email: "",
-                            message: "",
-                        });
-                    }, [3000]);
-                },
-                (error) => {
-                    setLoading(false);
-                    console.error(error);
-                    setCurrentAnimation("idle");
-
-                    showAlert({
-                        show: true,
-                        text: "I didn't receive your message 😢",
-                        type: "danger",
-                    });
-                }
-            );
-    };
+    //
+    //                 showAlert({
+    //                     show: true,
+    //                     text: "Thank you for your message 😃",
+    //                     type: "success",
+    //                 });
+    //
+    //                 setTimeout(() => {
+    //                     hideAlert(false);
+    //                     setCurrentAnimation("idle");
+    //                     setForm({
+    //                         name: "",
+    //                         email: "",
+    //                         message: "",
+    //                     });
+    //                 }, [3000]);
+    //             },
+    //             (error) => {
+    //                 setLoading(false);
+    //                 console.error(error);
+    //                 setCurrentAnimation("idle");
+    //
+    //                 showAlert({
+    //                     show: true,
+    //                     text: "I didn't receive your message 😢",
+    //                     type: "danger",
+    //                 });
+    //             }
+    //         );
+    // };
 
     return (
         <section className='relative flex lg:flex-row flex-col max-container'>
