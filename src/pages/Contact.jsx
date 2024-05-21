@@ -1,6 +1,6 @@
 import emailjs from "@emailjs/browser";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useRef, useState } from "react";
+import {Suspense, useEffect, useRef, useState} from "react";
 
 // import { Fox } from "../models";
 // import useAlert from "../hooks/useAlert";
@@ -23,8 +23,8 @@ const Contact = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsLoading(true);
-        setCurrentAnimation("hit");
-        console.log(import.meta.env.VITE_APP_EMAILJS_SERVICE_ID)
+        setCurrentAnimation("run");
+
         emailjs.send(
             import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
             import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
@@ -38,10 +38,13 @@ const Contact = () => {
             import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
         ).then(() => {
             setIsLoading(false);
+
+
             setForm({name: '', email: '', message: ''})
 
         }).catch((error) => {
             setIsLoading(false)
+            setCurrentAnimation('idle')
             console.log(error)
         })
     }
@@ -77,6 +80,13 @@ const Contact = () => {
     //             }
     //         );
     // };
+
+    useEffect(() => {
+        Object.values(actions).forEach((action) => action.stop())
+        if(actions[currentAnimation]) {
+            actions[currentAnimation].play()
+        }
+    }, [actions, currentAnimation])
 
     return (
         <section className='relative flex lg:flex-row flex-col max-container'>
