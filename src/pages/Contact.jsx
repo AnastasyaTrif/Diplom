@@ -3,10 +3,6 @@ import { Canvas } from "@react-three/fiber";
 import {Suspense, useEffect, useRef, useState} from "react";
 import useAlert from "../hooks/useAlert.jsx";
 
-// import { Fox } from "../models";
-// import useAlert from "../hooks/useAlert";
-// import { Alert, Loader } from "../components";
-
 const Contact = () => {
     const formRef = useRef();
     const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -41,6 +37,7 @@ const Contact = () => {
             showAlert({ show: true, text: 'Message sent successfully!', type: 'success'})
 
             setTimeout(() => {
+                hideAlert()
                 setCurrentAnimation('idle')
                 setForm({name: '', email: '', message: ''})
             }, [3000])
@@ -52,40 +49,11 @@ const Contact = () => {
             setIsLoading(false)
             setCurrentAnimation('idle')
             console.log(error)
+            showAlert({ show: true, text: 'Я не получила ваше сообщение!', type: 'danger'})
         })
     }
 
 
-    //
-    //                 showAlert({
-    //                     show: true,
-    //                     text: "Thank you for your message 😃",
-    //                     type: "success",
-    //                 });
-    //
-    //                 setTimeout(() => {
-    //                     hideAlert(false);
-    //                     setCurrentAnimation("idle");
-    //                     setForm({
-    //                         name: "",
-    //                         email: "",
-    //                         message: "",
-    //                     });
-    //                 }, [3000]);
-    //             },
-    //             (error) => {
-    //                 setLoading(false);
-    //                 console.error(error);
-    //                 setCurrentAnimation("idle");
-    //
-    //                 showAlert({
-    //                     show: true,
-    //                     text: "I didn't receive your message 😢",
-    //                     type: "danger",
-    //                 });
-    //             }
-    //         );
-    // };
 
     useEffect(() => {
         Object.values(actions).forEach((action) => action.stop())
