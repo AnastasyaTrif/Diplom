@@ -1,7 +1,10 @@
 import emailjs from "@emailjs/browser";
 import { Canvas } from "@react-three/fiber";
-import {Suspense, useEffect, useRef, useState} from "react";
+import {Suspense, useRef, useState} from "react";
 import useAlert from "../hooks/useAlert.jsx";
+import Alert from "../components/Alert.jsx";
+import Loader from "../components/Loader.jsx";
+import { Fox } from "../models/Fox.jsx";
 
 const Contact = () => {
     const formRef = useRef();
@@ -18,53 +21,55 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setIsLoading(true);
-        setCurrentAnimation("run");
+        setLoading(true);
+        setCurrentAnimation("hit");
 
         emailjs.send(
             import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
             import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
             {
-                from_name: from.name,
+                from_name: form.name,
                 to_name: "Anastasia",
-                from_email: from.email,
+                from_email: form.email,
                 to_email: 'trifakova2710@gmail.com',
-                message: from.message
+                message: form.message,
             },
             import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
         ).then(() => {
-            setIsLoading(false);
-            showAlert({ show: true, text: 'Message sent successfully!', type: 'success'})
+            setLoading(false);
+            showAlert({show: true, text: "Thank you for your message 😃", type: "success",})
 
             setTimeout(() => {
-                hideAlert()
-                setCurrentAnimation('idle')
-                setForm({name: '', email: '', message: ''})
+                hideAlert(false)
+                setCurrentAnimation("idle")
+                setForm({name: "", email: "", message: "",})
             }, [3000])
 
+        },
 
 
+        (error) => {
+            setLoading(false)
+            console.error(error)
+            setCurrentAnimation("idle")
 
-        }).catch((error) => {
-            setIsLoading(false)
-            setCurrentAnimation('idle')
-            console.log(error)
-            showAlert({ show: true, text: 'Я не получила ваше сообщение!', type: 'danger'})
+            showAlert({ show: true, text: "Я не получила ваше сообщение!", type: "danger", })
         })
     }
 
 
 
-    useEffect(() => {
-        Object.values(actions).forEach((action) => action.stop())
-        if(actions[currentAnimation]) {
-            actions[currentAnimation].play()
-        }
-    }, [actions, currentAnimation])
+    // useEffect(() => {
+    //     Object.values(actions).forEach((action) => action.stop())
+    //     if(actions[currentAnimation]) {
+    //         actions[currentAnimation].play()
+    //     }
+    // }, [actions, currentAnimation])
 
     return (
         <section className='relative flex lg:flex-row flex-col max-container'>
             {alert.show && <Alert {...alert} />}
+
 
             <div className='flex-1 min-w-[50%] flex flex-col'>
                 <h1 className='head-text'>Get in Touch</h1>
