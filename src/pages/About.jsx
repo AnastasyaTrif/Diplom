@@ -1,18 +1,10 @@
-//
-//
-// const About = () => {
-//     return (
-//         <div>About</div>
-//     )
-// }
-// export default About
 import {
     VerticalTimeline,
     VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 
 
-
+import {skills} from '../constants'
 
 import "react-vertical-timeline-component/style.min.css";
 
@@ -20,17 +12,14 @@ const About = () => {
     return (
         <section className='max-container'>
             <h1 className='head-text'>
-                Hello, I'm{" "}
-                <span className='blue-gradient_text font-semibold drop-shadow'>
-          {" "}
-                    knkn
-        </span>{" "}
+                Hello, I'm <span className='green-gradient_text font-semibold drop-shadow'>
+            Anastasia </span>
                 👋
             </h1>
 
             <div className='mt-5 flex flex-col gap-3 text-slate-500'>
                 <p>
-                    ryjsryjsryj
+                   Software Engineer, specializing in web prodacts
                 </p>
             </div>
 
@@ -41,7 +30,7 @@ const About = () => {
                     {skills.map((skill) => (
                         <div className='block-container w-20 h-20' key={skill.name}>
                             <div className='btn-back rounded-xl' />
-                            <div className='btn-front rounded-xl flex justify-center items-center'>
+                                <div className='btn-front rounded-xl flex justify-center items-center'>
                                 <img
                                     src={skill.imageUrl}
                                     alt={skill.name}

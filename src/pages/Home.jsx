@@ -6,6 +6,7 @@ import Sky from "../models/Sky.jsx";
 import Bird from "../models/Bird.jsx";
 import Plane from "../models/Plane.jsx";
 import HomeInfo from "../components/HomeInfo.jsx";
+import CookieConsent from '../components/CookieConsent.jsx';
 
 const Home = () => {
     const [isRotating, setIsRotating] = useState(false);
@@ -88,6 +89,7 @@ const Home = () => {
                     />
                 </Suspense>
             </Canvas>
+            <CookieConsent />
         </section>
     );
 };
