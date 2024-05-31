@@ -4,7 +4,7 @@ import {
 } from "react-vertical-timeline-component";
 
 
-import {skills} from '../constants'
+import {experiences, skills} from '../constants'
 
 import "react-vertical-timeline-component/style.min.css";
 
@@ -19,7 +19,7 @@ const About = () => {
 
             <div className='mt-5 flex flex-col gap-3 text-slate-500'>
                 <p>
-                   Software Engineer, specializing in web prodacts
+                   Software Engineer, specializing in web products
                 </p>
             </div>
 
@@ -43,10 +43,10 @@ const About = () => {
             </div>
 
             <div className='py-16'>
-                <h3 className='subhead-text'>Work Experience.</h3>
+                <h3 className='subhead-text'>Work Experience</h3>
                 <div className='mt-5 flex flex-col gap-3 text-slate-500'>
                     <p>
-                       xfryhxxxxxxxxxxxxxxxxxxxxxm
+                       тут что-нибудь про ворк экспириенс или что-то общее
                     </p>
                 </div>
 
