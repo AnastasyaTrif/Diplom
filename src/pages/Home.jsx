@@ -4,9 +4,10 @@ import Loader from "../components/Loader.jsx";
 import Island from "../models/Island.jsx";
 import Sky from "../models/Sky.jsx";
 import Bird from "../models/Bird.jsx";
-import Plane from "../models/Plane.jsx";
+// import Plane from "../models/Plane.jsx";
 import HomeInfo from "../components/HomeInfo.jsx";
 import CookieConsent from '../components/CookieConsent.jsx';
+
 
 const Home = () => {
     const [isRotating, setIsRotating] = useState(false);
@@ -74,19 +75,21 @@ const Home = () => {
                         position={islandPosition}
                         scale={islandScale}
                         // rotation={[0.1, 4.7077, 0]}
-                        rotation={[0, 15, 0]} // na 180 povernyla
+                        rotation={[0, 20, 0]} // na 180 povernyla polojenie pomeni
                         // rotation={islandRotation}
                         isRotating={isRotating}
                         setIsRotating={setIsRotating}
                         setCurrentStage={setCurrentStage}
 
+
                     />
-                    <Plane
-                        isRotating={isRotating}
-                    planeScale={planeScale}
-                    planePosition={planePosition}
-                        rotation={[0, 14.5, 0]}
-                    />
+                    {/*<Plane*/}
+                    {/*isRotating={isRotating}*/}
+                    {/*scale={planeScale}*/}
+                    {/*position={planePosition}*/}
+                    {/*rotation={[0, 16, 0]}*/}
+
+                    {/*/>*/}
                 </Suspense>
             </Canvas>
             <CookieConsent />
