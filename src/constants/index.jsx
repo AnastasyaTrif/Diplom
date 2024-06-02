@@ -6,10 +6,9 @@ import {
     github,
     html,
     javascript,
-    mongodb,
     motion,
     mui,
-    // mysql,
+    mysql,
     nextjs,
     nodejs,
     pricewise,
@@ -17,7 +16,6 @@ import {
     redux,
     sass,
     tailwindcss,
-    threads,
 
 } from "../assets/icons";
 
@@ -50,16 +48,12 @@ export const skills = [
         name: "JavaScript",
         type: "Frontend",
     },
+
     {
-        imageUrl: mongodb,
-        name: "MongoDB",
+        imageUrl: mysql,
+        name: "MySQL",
         type: "Database",
     },
-    // {
-    //     imageUrl: mysql,
-    //     name: "MySQL",
-    //     type: "Database",
-    // },
     {
         imageUrl: motion,
         name: "Motion",
@@ -175,7 +169,7 @@ export const projects = [
         link: '',
     },
     {
-        iconUrl: threads,
+        iconUrl: '',
         theme: 'btn-back-green',
         name: 'Full Stack Threads Clone',
         description: 'Created a full-stack replica of the popular discussion platform "Threads," enabling users to post and engage in threaded conversations.',
