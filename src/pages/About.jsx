@@ -13,19 +13,19 @@ const About = () => {
     return (
         <section className='max-container'>
             <h1 className='head-text'>
-                Hello, I'm <span className='green-gradient_text font-semibold drop-shadow'>
-            Anastasia </span>
+                Привет, я <span className='blue-gradient_text font-semibold drop-shadow'>
+            Анастасия </span>
                 👋
             </h1>
 
             <div className='mt-5 flex flex-col gap-3 text-slate-500'>
                 <p>
-                   Software Engineer, specializing in web products
+                   Веб-разработчик, специализирующийся на
                 </p>
             </div>
 
             <div className='py-10 flex flex-col'>
-                <h3 className='subhead-text'>My Skills</h3>
+                <h3 className='subhead-text'>Мои навыки</h3>
 
                 <div className='mt-16 flex flex-wrap gap-12'>
                     {skills.map((skill) => (
@@ -44,7 +44,7 @@ const About = () => {
             </div>
 
             <div className='py-16'>
-                <h3 className='subhead-text'>Work Experience</h3>
+                <h3 className='subhead-text'>Опыт работы</h3>
                 <div className='mt-5 flex flex-col gap-3 text-slate-500'>
                     <p>
                        тут что-нибудь про ворк экспириенс или что-то общее

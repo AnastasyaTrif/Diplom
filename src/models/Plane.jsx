@@ -1,30 +1,58 @@
-// import React, { useEffect, useRef } from 'react';
-// import planeScene from '../assets/3d/plane.glb';
-// import { useAnimations, useGLTF } from "@react-three/drei";
-// import Bird from "./Bird.jsx";
+// // import React, { useEffect, useRef } from 'react';
+// // import planeScene from '../assets/3d/plane.glb';
+// // import { useAnimations, useGLTF } from "@react-three/drei";
+// // import Bird from "./Bird.jsx";
+// //
+// //
+// // export const Plane = ({ isRotating, ...props }) => {
+// //
+// //
+// //     const ref = useRef();
+// //     const { scene, animations } = useGLTF(planeScene);
+// //     const { actions } = useAnimations(animations, ref);
+// //
+// //     useEffect(() => {
+// //         if (isRotating && actions.rotationAnimation) {
+// //             actions.rotationAnimation.play();
+// //         } else if (actions.rotationAnimation) {
+// //             actions.rotationAnimation.stop();
+// //         }
+// //     }, [isRotating, actions]);
+// //
+// //     return (
+// //         <mesh {...props} ref={ref} scale={[1, 1, 1]}>
+// //             <primitive object={scene} />
+// //         </mesh>
+// //     );
+// // };
+// // export default Plane;
+// //
+// //
+// import { useEffect, useRef } from "react";
+// import { useGLTF, useAnimations } from "@react-three/drei";
+//
+// import planeScene from "../assets/3d/plane.glb";
 //
 //
-// export const Plane = ({ isRotating, ...props }) => {
-//
-//
+// export function Plane({ isRotating, ...props }) {
 //     const ref = useRef();
+//
 //     const { scene, animations } = useGLTF(planeScene);
+//
 //     const { actions } = useAnimations(animations, ref);
 //
 //     useEffect(() => {
-//         if (isRotating && actions.rotationAnimation) {
-//             actions.rotationAnimation.play();
-//         } else if (actions.rotationAnimation) {
-//             actions.rotationAnimation.stop();
+//         if (isRotating) {
+//             actions["Take 001"].play();
+//         } else {
+//             actions["Take 001"].stop();
 //         }
-//     }, [isRotating, actions]);
+//     }, [actions, isRotating]);
 //
 //     return (
-//         <mesh {...props} ref={ref} scale={[2, 2, 2]}>
+//         <mesh {...props} ref={ref} scale={[1, 1, 1]}>
 //             <primitive object={scene} />
 //         </mesh>
 //     );
-// };
+// }
 // export default Plane;
-//
-//
