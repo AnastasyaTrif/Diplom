@@ -116,8 +116,9 @@ const Contact = () => {
                             checked={form.consent}
                             onChange={handleChange}
                         />
-                        Я согласен(а) на обработку моих персональных данных в соответствии с <a href="../assets/Политика_конфиденциальности.pdf" target="_blank" style={{ color: "blue" }}>политикой конфиденциальности</a>.
+                        Я согласен(а) на обработку моих персональных данных в соответствии с <a href="/Политика_конфиденциальности.pdf" target="_blank" style={{ color: "blue" }}>политикой конфиденциальности</a>.
                     </label>
+
 
                     <button
                         type="submit"

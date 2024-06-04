@@ -12,8 +12,6 @@ import react from './react.svg'
 import redux from './redux.svg'
 import sass from './sass.svg'
 import tailwindcss from './tailwindcss.svg'
-import pricewise from './pricewise.svg'
-import summiz from './summiz.svg'
 import arrow from './arrow.svg'
 import contact from './contact.svg'
 import soundon from './soundon.png'
@@ -34,8 +32,6 @@ export {
     redux,
     sass,
     tailwindcss,
-    pricewise,
-    summiz,
     arrow,
     contact,
     soundon,

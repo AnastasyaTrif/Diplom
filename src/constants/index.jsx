@@ -1,4 +1,4 @@
-import { meta, shopify, starbucks, tesla } from "../assets/images";
+import { modelD, reactt, game } from "../assets/images";
 import {
     contact,
     css,
@@ -11,7 +11,6 @@ import {
     mysql,
     nextjs,
     nodejs,
-    pricewise,
     react,
     redux,
     sass,
@@ -100,51 +99,41 @@ export const skills = [
 export const experiences = [
     {
         title: "Корпоративные сайты",
-        company_name: "сайты",
-        icon: starbucks,
+        icon: reactt,
         iconBg: "#accbe1",
-        date: "March 2020 - April 2021",
+        date: "Март 2022 - Настоящее время",
         points: [
-            // "Developing and maintaining web applications using React.js and other related technologies.",
-            "Туды-сюды и миллионер",
+            "Разработка и поддержка веб-приложений с использованием React.js и других связанных технологий.",
+            "Реализация адаптивного дизайна и обеспечение совместимости с различными браузерами.",
 
         ],
     },
     {
-        title: "React Native Developer",
-        company_name: "что-то",
-        icon: tesla,
+        title: "Браузерные игры на React",
+        icon: game,
         iconBg: "#fbc3bc",
-        date: "Jan 2021 - Feb 2022",
+        date: "Сетябрь 2023 - Настоящее время",
         points: [
-            "тоже сюдым тудым и все",
+            "Разработка и поддержка браузерных игр с использованием React.js и других связанных технологий.",
+            "Создание разнообразных игровых приложений, от простых аркад до сложных стратегий, с упором на оптимизацию и производительность.",
+            "Обеспечение увлекательного пользовательского опыта и интерактивности в играх.",
+            "Постоянное совершенствование навыков и изучение новых технологий в области веб-разработки игр.",
 
         ],
     },
     {
-        title: "Web Developer",
-        company_name: "чет",
-        icon: shopify,
+        title: "Интерактивные 3D-модели и визуализация",
+        icon: modelD,
         iconBg: "#b7e4c7",
-        date: "Jan 2022 - Jan 2023",
+        date: "Июнь 2023 - Настоящее время",
         points: [
-            "",
+            "Использование технологий, таких как Three.js и WebGL, для создания интерактивных 3D-моделей и визуализаций, которые могут быть интегрированы в веб-сайты и приложения.",
+            "Работа с Motion.",
+            "Глубокий уровень взаимодействия и погружения.",
         ],
     },
-    {
-        title: "Full stack Developer",
-        company_name: "где-то",
-        icon: meta,
-        iconBg: "#a2d2ff",
-        date: "Jan 2023 - Present",
-        points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
-        ],
-    },
-];
+    ]
+
 
 export const socialLinks = [
     {
@@ -162,17 +151,17 @@ export const socialLinks = [
 
 export const projects = [
     {
-        iconUrl: pricewise,
+        iconUrl: '',
         theme: 'btn-back-red',
-        name: 'Amazon Price Tracker',
-        description: 'Developed a web application that tracks and notifies users of price changes for products on Amazon, helping users find the best deals.',
+        name: 'Название проекта 1',
+        description: 'Описание проекта 1.',
         link: '',
     },
     {
         iconUrl: '',
         theme: 'btn-back-green',
-        name: 'Full Stack Threads Clone',
-        description: 'Created a full-stack replica of the popular discussion platform "Threads," enabling users to post and engage in threaded conversations.',
+        name: 'Название проекта 2',
+        description: 'Описание проекта 2.',
         link: '',
     },
 

@@ -22,9 +22,9 @@ const CookieConsent = () => {
 
     return (
         <div className="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 z-50 flex justify-between items-center">
-            <p>We use cookies to improve your experience. By using our site, you agree to our <a href="/privacy-policy" className="underline">Privacy Policy</a>.</p>
+            <p>Мы используем Cookie, чтобы улучшить ваш опыт. Используя наш сайт, вы соглашаетесь с <a href="/куки.pdf" target="_blank" className="underline">Политикой использования</a>.</p>
             <button onClick={handleAccept} className="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Accept
+                Принять
             </button>
         </div>
     );
